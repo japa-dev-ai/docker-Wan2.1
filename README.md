@@ -1,4 +1,4 @@
-# docker-Wan2.1
+# Docker-Wan2.1
 **Título:** Instalando e Configurando Wan2.1 no Docker – Modelos de Fundação para Vídeo  
 
 **Descrição:**  
