@@ -1,0 +1,27 @@
+services:
+  aiwan2.1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai_wan2.1
+    restart: unless-stopped
+    environment:
+      - TZ=America/Sao_Paulo
+      - DASH_API_KEY=your_key python t2v_14B_singleGPU.py --prompt_extend_method 'dashscope' --ckpt_dir ./Wan2.1-T2V-14B
+    volumes:
+      - ./output:/app/output
+    network_mode: host
+    ports:
+      - "22:22"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+networks:
+  net_sd_diff:
+    name: net_sd_diff
+    driver: bridge
